@@ -1,0 +1,8 @@
+CREATE TABLE user
+(
+  user_id BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT ,
+  username VARCHAR(400) NOT NULL,
+  password VARCHAR(400) NOT NULL
+);
+
+INSERT INTO user (username, password) VALUES ("testUser", "$2a$10$04TVADrR6/SPLBjsK0N30.Jf5fNjBugSACeGv1S69dZALR7lSov0y");
