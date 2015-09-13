@@ -1,4 +1,4 @@
-package com.antogeo.web.form;
+package com.antogeo.form;
 
 
 public class LoginForm {

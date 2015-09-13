@@ -1,6 +1,6 @@
-package com.antogeo.web.dto;
+package com.antogeo.dto;
 
-import com.antogeo.core.entity.User;
+import com.antogeo.entity.User;
 
 /**
  * Created by George on 19/11/2014.

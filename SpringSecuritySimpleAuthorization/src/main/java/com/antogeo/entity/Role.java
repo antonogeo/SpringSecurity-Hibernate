@@ -1,4 +1,4 @@
-package com.antogeo.core.entity;
+package com.antogeo.entity;
 
 
 import javax.persistence.*;
