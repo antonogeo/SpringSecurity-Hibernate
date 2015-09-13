@@ -1,12 +1,10 @@
-package com.antogeo.core.service;
+package com.antogeo.service;
 
-import com.antogeo.core.dao.UserDao;
-import com.antogeo.core.entity.User;
+import com.antogeo.dao.UserDao;
+import com.antogeo.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Service("userService")
 public class UserService {

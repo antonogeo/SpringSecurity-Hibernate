@@ -1,4 +1,4 @@
-package com.antogeo.core.dao;
+package com.antogeo.dao;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

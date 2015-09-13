@@ -1,6 +1,6 @@
-package com.antogeo.core.service;
+package com.antogeo.service;
 
-import com.antogeo.core.dao.UserDao;
+import com.antogeo.dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -27,14 +27,14 @@ public class CustomUserDetailsService implements UserDetailsService {
      *
      * @param username
      * @return
-     * @throws UsernameNotFoundException
+     * @throws org.springframework.security.core.userdetails.UsernameNotFoundException
      */
     @Transactional(readOnly = true)
     @Override
     public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
 
         //get user from the database, via Hibernate
-        com.antogeo.core.entity.User user = userDao.getUserByUsername(username);
+        com.antogeo.entity.User user = userDao.getUserByUsername(username);
 
         //Collect User authorities
         List<GrantedAuthority> authorities = buildUserAuthority(user);
@@ -51,13 +51,13 @@ public class CustomUserDetailsService implements UserDetailsService {
      * @param authorities
      * @return
      */
-    private User buildUserForAuthentication(com.antogeo.core.entity.User user, List<GrantedAuthority> authorities) {
+    private User buildUserForAuthentication(com.antogeo.entity.User user, List<GrantedAuthority> authorities) {
 
         return new User(user.getUsername(), user.getPassword(), true, true, true, true, authorities);
     }
 
 
-    private List<GrantedAuthority> buildUserAuthority(com.antogeo.core.entity.User user) {
+    private List<GrantedAuthority> buildUserAuthority(com.antogeo.entity.User user) {
 
         Set<GrantedAuthority> authoritiesSet = new HashSet<GrantedAuthority>();
 

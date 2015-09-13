@@ -1,10 +1,8 @@
-package com.antogeo.core.dao;
+package com.antogeo.dao;
 
-import com.antogeo.core.entity.User;
+import com.antogeo.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 
 @Repository
