@@ -12,7 +12,7 @@ Spring MVC, Spring Security, Hibernate, MySQL
 
 ## Installation
 
-1. Create a DB and run the /database/springSecuritySimpleAuthenticationDDL.sql
+1. Create a DB and run the /database/queries.sql
 
 2. Go to /src/main/webapp/WEB-INF/spring-database.xml and replace the TODO_typeYourDBUrl, TODO_typeYourDBUsername, TODO_typeYourDBPassword with your info.
 
