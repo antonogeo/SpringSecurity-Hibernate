@@ -47,4 +47,12 @@ public class MainController {
 
     }
 
+    @RequestMapping(value = "/profile", method = RequestMethod.GET)
+    public String profile(Model model){
+
+        return "profile";
+    }
+
+
+
 }

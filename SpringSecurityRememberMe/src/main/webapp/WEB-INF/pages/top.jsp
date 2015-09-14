@@ -16,6 +16,8 @@
             <ul class="nav navbar-nav">
                 <li <c:if test="${fn:endsWith(pageContext.request.requestURI, '/dashboard.jsp')}" >class="active"</c:if> ><a href="dashboard">Dashboard</a></li>
                 <li <c:if test="${fn:endsWith(pageContext.request.requestURI, '/admin.jsp')}" >class="active"</c:if> ><a href="admin">Admin Page</a></li>
+                <li <c:if test="${fn:endsWith(pageContext.request.requestURI, '/profile.jsp')}" >class="active"</c:if> ><a href="profile">Profile</a></li>
+
             </ul>
         </div>
     </div>

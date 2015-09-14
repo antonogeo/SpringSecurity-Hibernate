@@ -11,55 +11,33 @@
     <link rel="icon" href="../../favicon.ico">
     <link href="<c:url value="/resources/theme/css/bootstrap.min.css" />" rel="stylesheet">
     <link href="<c:url value="/resources/theme/css/starter-template.css" />" rel="stylesheet">
-    <title>Dashboard</title>
+    <title>${profileUser.username}</title>
 </head>
 <body>
-
-<!--Logout Code-->
-<c:url value="/j_spring_security_logout" var="logoutUrl" />
-
-
-<form action="${logoutUrl}" method="post" id="logoutForm">
-</form>
-
-<script>
-    function formSubmit() {
-        document.getElementById("logoutForm").submit();
-    }
-</script>
 
 <jsp:include page="top.jsp" />
 
 <div class="container">
     <div class="starter-template">
 
-        <h1>Dashboard</h1>
-
-        <p class="lead">The ultimate dashboard!</p><br />
-
-        <c:out value='${message}' /><br />
-
-        <c:if test="${pageContext.request.userPrincipal.name != null}">
-            <h2>
-                Welcome : ${pageContext.request.userPrincipal.name}
-                | <a href="javascript:formSubmit()"> Logout</a>
-            </h2>
-        </c:if>
-
+     <h3>Change Password</h3>
 
         <sec:authorize access="isRememberMe()">
-            <h2> You just login using Remember Me Authentication.</h2>
+            <h2> You are authenticated with Remember Me. You need to login again to change your password. </h2>
         </sec:authorize>
 
         <sec:authorize access="isFullyAuthenticated()">
-            <h2>You just login using the login form.</h2>
+            <button>Change password</button>
         </sec:authorize>
+
+
+
 
     </div>
 </div>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="<c:url value="/resources/theme/js/bootstrap.min.js" />"></script>
+<script src="<c:url value='/resources/theme/js/bootstrap.min.js' />"></script>
 </body>
 </html>
