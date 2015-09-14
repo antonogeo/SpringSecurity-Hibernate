@@ -9,11 +9,11 @@ If "USER" tries to access the admin page he will get redirected to the 403 page.
 
 Dashboard is accessible only by authenticated users.
 
-If user checks the remember me checkbox when he tries to login, the app will store a cookie to the browser. As long as the cookie is
+If user checks the remember me checkbox on the login form, the app will store a cookie to the browser. As long as the cookie is
 active, the user can enter to the app without login.
 
 The user has restricted authorization when he is authenticated using Remember me, for security purposes.
-This can be tested at the profile page where user must use the form login to change his password.
+This can be tested at the profile page where the remember-me authenticated user cannot change his password.
 
 ## Technologies
 
