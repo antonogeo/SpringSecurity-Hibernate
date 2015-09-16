@@ -15,9 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import javax.validation.ValidationException;
-import java.util.ArrayList;
-import java.util.List;
 
 
 @Controller
@@ -25,15 +22,6 @@ public class MainController {
 
     @Autowired
     private UserService userService;
-
-    private List<String> getRoleList(){
-        List<String> roleList = new ArrayList<String>();
-
-        roleList.add(RoleConstant.USER);
-        roleList.add(RoleConstant.ADMIN);
-
-        return roleList;
-    }
 
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
