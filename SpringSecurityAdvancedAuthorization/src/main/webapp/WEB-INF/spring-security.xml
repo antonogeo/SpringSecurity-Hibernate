@@ -15,6 +15,7 @@
     <http auto-config="true" use-expressions="true">
 
         <intercept-url pattern="/dashboard**" access="isAuthenticated()" />
+        <intercept-url pattern="/object**" access="isAuthenticated()" />
         <intercept-url pattern="/admin**" access="hasAuthority('VIEW_ADMIN_PAGE')" />
 
         <access-denied-handler error-page="/403" />

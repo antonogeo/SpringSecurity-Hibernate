@@ -5,6 +5,7 @@ import com.antogeo.entity.Object;
 import com.antogeo.entity.User;
 import com.antogeo.form.ObjectForm;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
@@ -46,7 +47,7 @@ public class ObjectService extends AbstractService {
         return objectDao.getByUserId(userId);
     }
 
-
+    @PreAuthorize("hasRole('CREATE_OBJECT')")
     @Transactional(readOnly = false)
     public Object insertObject(ObjectForm form, Principal principal) {
 
