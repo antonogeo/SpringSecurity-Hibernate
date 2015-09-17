@@ -26,19 +26,10 @@ public class UserDao extends AbstractDao  {
     }
 
     @Override
-    public Object update(Object o) {
-        return null;
-    }
-
-    @Override
     public List getByUserId(long userId) {
         return null;
     }
 
-    @Override
-    public boolean deleteById(long objectId) {
-        return false;
-    }
 
     public User getUserByUsername(String username) {
 

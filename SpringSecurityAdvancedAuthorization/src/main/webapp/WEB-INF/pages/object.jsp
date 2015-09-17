@@ -1,5 +1,8 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -17,7 +20,8 @@
 <jsp:include page="top.jsp" />
 
 <div class="container">
-    <div class="starter-template">
+    <div class="col-lg-4">
+
 
         <h1>Object Page</h1>
 
@@ -26,18 +30,58 @@
 
         <c:out value='${message}' /><br />
 
-        <form:form  action ="create-object" method='POST' commandName="objectForm" cssClass="form-signin">
+        <h3>Object List</h3>
 
-            <h2 class="form-signin-heading">Create object</h2>
+        <sec:authorize access="hasAuthority('VIEW_OBJECT')">
 
-            <label for="inputName" class="sr-only">Name</label>
-            <form:input path="name" id="inputName" placeholder="Name" size="30" cssClass="form-control" />
+            <table class="table table-bordered table-striped">
 
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Create Object</button>
-        </form:form>
+                <c:forEach items="${objects}" var="object">
 
+                    <tr>
+                        <td>
+                                ${object.name}
+                        </td>
+                        <td>
+                                ${object.value}
+                        </td>
+
+                    </tr>
+
+                </c:forEach>
+
+            </table>
+
+        </sec:authorize>
+
+
+        <sec:authorize access="hasAuthority('CREATE_OBJECT')">
+
+            <form:form  action ="create-object" method='POST' commandName="objectForm">
+
+                <h2>Create object</h2>
+
+                <div class="form-group">
+                    <label for="nameInput">Object Name</label>
+                    <form:input id="nameInput" path="name" placeholder="Object Name" size="30" cssClass="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label for="valueInput">Value</label>
+                    <form:input id="valueInput" path="value" placeholder="Value" size="30" cssClass="form-control" />
+                </div>
+
+                <button class="btn btn-default" type="submit">Create Object</button>
+
+
+            </form:form>
+
+        </sec:authorize>
 
     </div>
+
+
+
 </div>
 
 

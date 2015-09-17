@@ -4,16 +4,23 @@ import com.antogeo.dao.UserDao;
 import com.antogeo.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 
 @Service("userService")
+@EnableTransactionManagement
 public class UserService extends AbstractService {
 
     @Autowired
     private UserDao userDao;
+
+    @Override
+    public List getAll() {
+        return null;
+    }
 
     @Override
     public Object insert(Object o) {
@@ -21,19 +28,10 @@ public class UserService extends AbstractService {
     }
 
     @Override
-    public Object update(Object o) {
+    public List getByUserId(long userId) {
         return null;
     }
 
-    @Override
-    public List getObjectsByUserId(long userId) {
-        return null;
-    }
-
-    @Override
-    public boolean deleteObjectById(long objectId) {
-        return false;
-    }
 
     @Transactional(readOnly = true)
     public User getUserByUsername(String username) {

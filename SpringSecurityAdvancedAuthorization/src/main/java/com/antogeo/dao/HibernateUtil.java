@@ -26,18 +26,6 @@ public class HibernateUtil {
         return o;
     }
 
-    protected boolean deleteById(Class<?> type, long id) throws RuntimeException{
-
-        Session session = getSessionFactory().getCurrentSession();
-        Object  persistentInstance = session.load(type, id);
-
-        if(persistentInstance != null){
-            session.delete(persistentInstance);
-            return true;
-        }
-        return false;
-
-    }
 
     protected List<Object> selectAll(String objectType){
         try{

@@ -15,6 +15,13 @@ public class Object {
 
     public Object() {}
 
+    public Object(String name,
+                  int value,
+                  User creator) {
+        this.name = name;
+        this.value = value;
+        this.creator = creator;
+    }
 
     @Id
     @GeneratedValue

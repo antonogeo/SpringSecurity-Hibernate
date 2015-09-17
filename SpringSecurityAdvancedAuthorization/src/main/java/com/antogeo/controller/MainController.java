@@ -1,11 +1,18 @@
 package com.antogeo.controller;
 
+import com.antogeo.entity.Object;
 import com.antogeo.form.LoginForm;
+import com.antogeo.form.ObjectForm;
 import com.antogeo.service.ObjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.security.Principal;
+import java.util.List;
 
 @Controller
 public class MainController {
@@ -52,35 +59,23 @@ public class MainController {
 
     }
 
+    @RequestMapping(value = "/object", method = RequestMethod.GET)
+    public String viewObject(Model model) {
+
+        List<Object> objects = objectService.getAll();
+
+        model.addAttribute("objectForm", new ObjectForm());
+        model.addAttribute("objects", objects);
+
+        return "object";
+    }
+
     @RequestMapping(value = "/create-object", method = RequestMethod.POST)
-    public String createObject(Object object) {
+    public String createObject(@Valid @ModelAttribute(value = "objectForm")ObjectForm objectForm, Principal principal, BindingResult result) {
 
-        objectService.insert(object);
+        objectService.insertObject(objectForm, principal);
 
-
-        return "object";
-
-    }
-
-    @RequestMapping(value = "/edit-object", method = RequestMethod.POST)
-    public String editObject(@RequestParam("objectId") int objectId, @RequestParam("value") int value){
-
-        //int id = Integer.valueOf(objectId);
-
-       // objectService.
-
-        //objectService.update(id);
-
-        return "object";
-    }
-
-    @RequestMapping(value = "/delete-object", method = RequestMethod.POST)
-    public String deleteObject(@RequestParam("objectId") String objectId){
-
-        int id = Integer.valueOf(objectId);
-        objectService.update(id);
-
-        return "object";
+        return "redirect:/object";
     }
 
 }

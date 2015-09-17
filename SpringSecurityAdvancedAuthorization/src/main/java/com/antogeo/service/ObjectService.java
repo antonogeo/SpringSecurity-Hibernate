@@ -2,18 +2,32 @@ package com.antogeo.service;
 
 import com.antogeo.dao.ObjectDao;
 import com.antogeo.entity.Object;
+import com.antogeo.entity.User;
+import com.antogeo.form.ObjectForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.security.Principal;
 import java.util.List;
 
 @Service("objectService")
+@EnableTransactionManagement
 public class ObjectService extends AbstractService {
 
     @Autowired
     private ObjectDao objectDao;
 
+    @Autowired
+    private UserService userService;
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<Object> getAll() {
+
+        return objectDao.getAll();
+    }
 
     @Transactional(readOnly = false)
     @Override
@@ -25,37 +39,25 @@ public class ObjectService extends AbstractService {
     }
 
 
-    @Transactional(readOnly = false)
-    @Override
-    public Object update(java.lang.Object o) {
-
-        Object object = objectDao.update(o);
-
-        return object;
-    }
-
-
     @Transactional(readOnly = true)
     @Override
-    public List<com.antogeo.entity.Object> getObjectsByUserId(long userId) {
+    public List<com.antogeo.entity.Object> getByUserId(long userId) {
 
         return objectDao.getByUserId(userId);
     }
 
 
     @Transactional(readOnly = false)
-    @Override
-    public boolean deleteObjectById(long objectId) {
+    public Object insertObject(ObjectForm form, Principal principal) {
 
-        return objectDao.deleteById(objectId);
+        User user = userService.getUserByUsername(principal.getName());
+
+        Object object = new Object(form.getName(), form.getValue(), user);
+
+        object = insert(object);
+
+        return object;
     }
-
-
-  /*  public boolean updateObjectValue(long objectId){
-
-        Object object =
-
-    }*/
 
 
     public void setObjectDao(ObjectDao objectDao) {
