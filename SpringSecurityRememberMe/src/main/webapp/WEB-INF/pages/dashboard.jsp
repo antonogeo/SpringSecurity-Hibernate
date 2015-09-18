@@ -52,7 +52,6 @@
         </sec:authorize>
 
         <sec:authorize access="isFullyAuthenticated()">
-            <h2>You just login using the login form.</h2>
         </sec:authorize>
 
     </div>
